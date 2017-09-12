@@ -196,7 +196,7 @@ module.exports = function () {
     let vueExtractPlugin;
 
     if (Config.extractVueStyles) {
-        vueExtractPlugin = extractPlugins.length ? extractPlugins[0] : new ExtractTextPlugin('vue-styles.css');
+        vueExtractPlugin =  (typeof Config.extractVueStyles === 'boolean' && extractPlugins.length) ? extractPlugins[0] : new ExtractTextPlugin(Config.extractVueStyles);
     }
 
     rules.push({
