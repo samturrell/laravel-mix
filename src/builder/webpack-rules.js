@@ -196,7 +196,7 @@ module.exports = function () {
     let vueExtractPlugin;
 
     if (Config.extractVueStyles) {
-        vueExtractPlugin =  (typeof Config.extractVueStyles === 'boolean' && extractPlugins.length) ? extractPlugins[0] : new ExtractTextPlugin(Config.extractVueStyles);
+        vueExtractPlugin = ((typeof Config.extractVueStyles === 'boolean') && extractPlugins.length) ? extractPlugins[0] : new ExtractTextPlugin(Config.extractVueStyles);
     }
 
     rules.push({
@@ -248,8 +248,9 @@ module.exports = function () {
     });
 
     // If there were no existing extract text plugins to add our
-    // Vue styles extraction too, we'll push a new one in.
-    if (Config.extractVueStyles && ! extractPlugins.length) {
+    // Vue styles extraction to or an extraction path was 
+    // provided, we'll push a new one in.
+    if (Config.extractVueStyles && (typeof Config.extractVueStyles !== 'boolean')) {
         extractPlugins.push(vueExtractPlugin);
     }
 
