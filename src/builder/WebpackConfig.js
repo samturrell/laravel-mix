@@ -67,7 +67,7 @@ class WebpackConfig {
             path: path.resolve(Mix.isUsing('hmr') ? '/' : Config.publicPath),
             filename: '[name].js',
             chunkFilename: '[name].js',
-            publicPath: Mix.isUsing('hmr') ? (http + '://localhost:8080/') : ''
+            publicPath: Mix.isUsing('hmr') ? (http + '://localhost:8080/') : '/'
         };
 
         return this;
@@ -104,12 +104,12 @@ class WebpackConfig {
      */
     buildResolving() {
         let extensions = ['*', '.js', '.jsx', '.vue'];
-        
+
         let buildFile = 'vue/dist/vue.common.js';
 
         if (Config.typeScript) {
             extensions.push('.ts', '.tsx');
-            
+
             buildFile = 'vue/dist/vue.esm.js';
         }
 
