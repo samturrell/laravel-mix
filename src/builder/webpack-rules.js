@@ -196,7 +196,8 @@ module.exports = function () {
     let vueExtractPlugin;
 
     if (Config.extractVueStyles) {
-        vueExtractPlugin = ((typeof Config.extractVueStyles === 'boolean') && extractPlugins.length) ? extractPlugins[0] : new ExtractTextPlugin(Config.extractVueStyles);
+        console.log(Config.extractVueStyles)
+        vueExtractPlugin =  (typeof Config.extractVueStyles === 'boolean' && extractPlugins.length) ? extractPlugins[0] : new ExtractTextPlugin(Config.extractVueStyles);
     }
 
     rules.push({
@@ -204,7 +205,7 @@ module.exports = function () {
         loader: 'vue-loader',
         exclude: /bower_components/,
         options: {
-            // extractCSS: Config.extractVueStyles,
+             extractCSS: Config.extractVueStyles,
             loaders: Config.extractVueStyles ? {
                 js: {
                     loader: 'babel-loader',
@@ -248,9 +249,9 @@ module.exports = function () {
     });
 
     // If there were no existing extract text plugins to add our
-    // Vue styles extraction to or an extraction path was 
+    // Vue styles extraction to or an extraction path was
     // provided, we'll push a new one in.
-    if (Config.extractVueStyles && (typeof Config.extractVueStyles !== 'boolean')) {
+    if (Config.extractVueStyles && typeof Config.extractVueStyles !== 'boolean') {
         extractPlugins.push(vueExtractPlugin);
     }
 
