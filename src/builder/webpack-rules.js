@@ -196,7 +196,6 @@ module.exports = function () {
     let vueExtractPlugin;
 
     if (Config.extractVueStyles) {
-        console.log(Config.extractVueStyles)
         vueExtractPlugin =  (typeof Config.extractVueStyles === 'boolean' && extractPlugins.length) ? extractPlugins[0] : new ExtractTextPlugin(Config.extractVueStyles);
     }
 
