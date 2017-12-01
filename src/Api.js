@@ -384,6 +384,18 @@ class Api {
 
 
     /**
+     * Override the default manifest build path.
+     *
+     * @param {string} path
+     */
+    setManifestPath(path) {
+        Config.manifestPath = path;
+
+        return this;
+    }
+
+
+    /**
      * Set a prefix for all generated asset paths.
      *
      * @param {string} path

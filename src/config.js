@@ -113,6 +113,14 @@ module.exports = function () {
 
 
         /**
+         * The manifest path for the build.
+         *
+         * @type {String}
+         */
+        manifestPath: '',
+
+
+        /**
          * Does the project require React support?
          *
          * @type {Boolean}
